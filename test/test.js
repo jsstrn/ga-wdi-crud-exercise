@@ -54,7 +54,7 @@ describe('My Tests', () => {
         .end(done)
     })
   })
-  describe('DELETE /delete/player', () => {
+  describe('DELETE /scores/:id', () => {
     it('should delete player', (done) => {
       request(app)
         .delete('/scores/0')
