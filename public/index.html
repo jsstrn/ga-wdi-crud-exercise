@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My Scoreboard</title>
+    <style media="screen">
+    </style>
+  </head>
+  <body>
+    <h1>My Scoreboard</h1>
+    <h2>Create/update a player</h2>
+    <form class="" action="/scores/" method="post">
+      <input type="text" name="player" value="Zoolander" placeholder="Your Name">
+      <input type="text" name="score" value="99" placeholder="Your Score">
+      <button type="submit" name="button">Create</button>
+    </form>
+    <br>
+    <h2>Delete a player</h2>
+    <form class="" action="/scores/" method="delete">
+      <input type="text" name="player" value="Zoolander" placeholder="Your Name">
+      <input type="text" name="score" value="99" placeholder="Your Score">
+      <button type="submit" name="button">Delete</button>
+    </form>
+    <br>
+    <table id="table">
+      <tr>
+        <th>Player</th>
+        <th>Score</th>
+      </tr>
+    </table>
+    <br>
+    <script type="text/javascript">
+      var table = document.getElementById('table')
+      fetch('/scoreboard')
+        .then(res => res.json())
+        .then(data => {
+          data.forEach(member => {
+            var tr = document.createElement('tr')
+            var td1 = document.createElement('td')
+            var td2 = document.createElement('td')
+            td1.textContent = member.player
+            td2.textContent = member.score
+            tr.appendChild(td1)
+            tr.appendChild(td2)
+            table.appendChild(tr)
+          })
+        }).catch(error => {
+          throw new Error(error)
+        })
+    </script>
+  </body>
+</html>
