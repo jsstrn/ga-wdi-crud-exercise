@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node app/server.js",
     "test": "standard app && mocha test"
   },
   "repository": {
