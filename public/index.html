@@ -9,19 +9,29 @@
   <body>
     <h1>My Scoreboard</h1>
     <h2>Create a new player</h2>
-    <form class="" action="/scores/" method="post">
-      <input type="text" name="player" value="Zoolander" placeholder="Your Name">
-      <input type="text" name="score" value="99" placeholder="Your Score">
-      <button type="submit">Create</button>
+    <form class="" action="/scores/" method="POST">
+      <input type="text" name="player" placeholder="Player's Name" required>
+      <input type="number" name="score" placeholder="Player's Score" required>
+      <button type="submit">Create Player</button>
+    </form>
+    <br>
+    <h2>Update a player</h2>
+    <form class="" action="/scores/" method="DELETE">
+      <select id="select-player-update" name="player"></select>
+      <!-- <input type="text" name="player" value="Zoolander" placeholder="Your Name"> -->
+      <input type="number" name="score"placeholder="Player's Score" required>
+      <button type="submit">Update Player</button>
     </form>
     <br>
     <h2>Delete a player</h2>
-    <form class="" action="/scores/" method="delete">
-      <input type="text" name="player" value="Zoolander" placeholder="Your Name">
-      <input type="text" name="score" value="99" placeholder="Your Score">
-      <button type="submit" name="button">Delete</button>
+    <form class="" action="/scores/" method="DELETE">
+      <!-- <select id="select-player-delete" name="player"></select> -->
+      <input type="text" name="player" value="Alvinder" placeholder="Your Name">
+      <!-- <input type="text" name="score" value="99" placeholder="Your Score"> -->
+      <button type="submit">Delete Player</button>
     </form>
     <br>
+    <h2>List of players and scores</h2>
     <table id="table">
       <tr>
         <th>Player</th>
@@ -30,11 +40,22 @@
     </table>
     <br>
     <script type="text/javascript">
+      var selectUpdate = document.getElementById('select-player-update')
+      var selectDelete = document.getElementById('select-player-delete')
       var table = document.getElementById('table')
       fetch('/scores')
         .then(res => res.json())
         .then(data => {
           data.forEach(member => {
+            // populate select options
+            var op1 = document.createElement('option')
+            var op2 = document.createElement('option')
+            op1.textContent = member.player
+            op2.textContent = member.player
+            selectUpdate.appendChild(op1)
+            selectDelete.appendChild(op2)
+
+            // populate table rows
             var tr = document.createElement('tr')
             var td1 = document.createElement('td')
             var td2 = document.createElement('td')
