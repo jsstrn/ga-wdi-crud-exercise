@@ -16,21 +16,19 @@ const Score = mongoose.model('Score', {
   "score": Number
 })
 
-// read local data
-const scoreboard = require('../data/scoreboard.json')
-
 const app = express()
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get('/scores', (req, res) => {
-  res.json(scoreboard)
-})
-
-app.get('/scores/:id', (req, res) => {
-  const score = scoreboard[req.params.id]
-  res.json(score)
+  Score.model('Score').find((err, scores) => {
+    if (err) {
+      console.error(err)
+      res.status(404).end(err)
+    }
+    res.json(scores)
+  })
 })
 
 // create
@@ -39,21 +37,43 @@ app.post('/scores', (req, res) => {
   score.save(err => {
     if (err) return console.error(err)
     console.log('New score added.')
-    res.json(req.body)
+    res.redirect('/')
   })
-  // scoreboard.push(req.body)
 })
 
 // update
-app.put('/scores/:id', (req, res) => {
-  scoreboard[req.params.id] = req.body
-  res.json(scoreboard[req.params.id])
+app.put('/scores/', (req, res) => {
+  var query = { player: req.body.player }
+  Score.findOneAndUpdate(query, req.body, { new: true }, (err, score) => {
+    if (err) {
+      console.error(err)
+      res.status(500).end(err)
+    } else if (score) {
+      console.log('Player updated', JSON.stringify(score))
+      res.redirect('/')
+    } else {
+      console.warn('Not found')
+      res.status(404).end('Not found')
+    }
+  })
 })
 
 // delete
-app.delete('/scores/:id', (req, res) => {
-  delete scoreboard[Number(req.params.id)]
-  res.send(scoreboard)
+app.delete('/scores/', (req, res) => {
+  // console.log(req.body)
+  var query = { player: req.body.player }
+  Score.findOneAndRemove(query, (err, score) => {
+    if (err) {
+      console.error(err)
+      res.status(500).end(err)
+    } else if (score) {
+      console.log('Player deleted', JSON.stringify(score))
+      res.redirect('/')
+    } else {
+      console.warn('Not found')
+      res.status(404).end('Not found')
+    }
+  })
 })
 
 module.exports = app
