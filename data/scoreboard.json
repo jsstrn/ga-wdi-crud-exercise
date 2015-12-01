@@ -1,42 +1,103 @@
 [
-	{
-		"player": "Bertha",
-		"score": 97
-	},
-	{
-		"player": "Whitney",
-		"score": 91
-	},
-	{
-		"player": "Alden",
-		"score": 15
-	},
-	{
-		"player": "Molly",
-		"score": 65
-	},
-	{
-		"player": "Nero",
-		"score": 9
-	},
-	{
-		"player": "Elliott",
-		"score": 38
-	},
-	{
-		"player": "Erich",
-		"score": 89
-	},
-	{
-		"player": "Rigel",
-		"score": 30
-	},
-	{
-		"player": "Finn",
-		"score": 45
-	},
-	{
-		"player": "Karly",
-		"score": 8
-	}
+  null,
+  {
+    "player": "Whitney",
+    "score": 91
+  },
+  {
+    "player": "Alden",
+    "score": 15
+  },
+  {
+    "player": "Molly",
+    "score": 65
+  },
+  {
+    "player": "Nero",
+    "score": 77
+  },
+  {
+    "player": "Elliott",
+    "score": 38
+  },
+  {
+    "player": "Erich",
+    "score": 89
+  },
+  {
+    "player": "Rigel",
+    "score": 30
+  },
+  {
+    "player": "Finn",
+    "score": 45
+  },
+  {
+    "player": "Karly",
+    "score": 8
+  },
+  {
+    "player": "Jesstern",
+    "score": 88
+  },
+  {
+    "player": "Jesstern",
+    "score": 88
+  },
+  {
+    "player": "Jesstern",
+    "score": 88
+  },
+  {
+    "player": "Jesstern",
+    "score": 88
+  },
+  {
+    "player": "Jesstern",
+    "score": 88
+  },
+  {
+    "player": "Jesstern",
+    "score": 88
+  },
+  {
+    "player": "Jesstern",
+    "score": 88
+  },
+  {
+    "player": "Jesstern",
+    "score": 88
+  },
+  {
+    "player": "Jesstern",
+    "score": 88
+  },
+  {
+    "player": "Jesstern",
+    "score": 88
+  },
+  {
+    "player": "Jesstern",
+    "score": 88
+  },
+  {
+    "player": "Jesstern",
+    "score": 88
+  },
+  {
+    "player": "Jesstern",
+    "score": 88
+  },
+  {
+    "player": "Jesstern",
+    "score": 88
+  },
+  {
+    "player": "Jesstern",
+    "score": 88
+  },
+  {
+    "player": "Jesstern",
+    "score": 88
+  }
 ]
