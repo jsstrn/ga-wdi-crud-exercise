@@ -50,7 +50,7 @@ app.put('/scores/', (req, res) => {
       res.status(500).end(err)
     } else if (score) {
       console.log('Player updated', JSON.stringify(score))
-      res.redirect('/')
+      res.json(score)
     } else {
       console.warn('Not found')
       res.status(404).end('Not found')
@@ -68,7 +68,7 @@ app.delete('/scores/', (req, res) => {
       res.status(500).end(err)
     } else if (score) {
       console.log('Player deleted', JSON.stringify(score))
-      res.redirect('/')
+      res.json(score)
     } else {
       console.warn('Not found')
       res.status(404).end('Not found')
